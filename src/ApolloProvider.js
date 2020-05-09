@@ -50,10 +50,13 @@ const refreshLink = new TokenRefreshLink({
         }
     },
     fetchAccessToken: () => {
-        return fetch("http://localhost:5000/refresh_token", {
-            method: "POST",
-            credentials: "include",
-        });
+        return fetch(
+            "https://second-archive-server.herokuapp.com/refresh_token",
+            {
+                method: "POST",
+                credentials: "include",
+            }
+        );
     },
     handleFetch: (accessTokenField) => {
         setAccessToken(accessTokenField);
