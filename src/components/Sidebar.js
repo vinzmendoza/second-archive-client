@@ -248,10 +248,6 @@ const Sidebar = ({ history }) => {
                                                                 ],
                                                         }}
                                                     >
-                                                        {console.log(
-                                                            itemIdUrl,
-                                                            item.id
-                                                        )}
                                                         <ListIcon
                                                             icon={FiHash}
                                                             size="14px"

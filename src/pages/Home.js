@@ -49,8 +49,6 @@ function Home() {
         return <h1>no data...</h1>;
     }
 
-    if (data) console.log(data);
-
     return (
         <Box m={6} borderRadius="3px">
             <Flex>
