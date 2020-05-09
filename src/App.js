@@ -23,7 +23,7 @@ function App() {
     const [authUser, setAuthUser] = useState({});
 
     useEffect(() => {
-        fetch("http://localhost:5000/refresh_token", {
+        fetch("https://second-archive-server.herokuapp.com/refresh_token", {
             method: "POST",
             credentials: "include",
         }).then(async (x) => {
