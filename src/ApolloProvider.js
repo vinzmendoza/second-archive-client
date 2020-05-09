@@ -13,8 +13,8 @@ import { onError } from "apollo-link-error";
 
 let accessToken = "";
 const httpLink = createHttpLink({
-    uri: "http://localhost:5000/graphql",
-    credentials: "include"
+    uri: "https://second-archive-server.herokuapp.com/graphql",
+    credentials: "include",
 });
 
 const authLink = setContext(async (_, { headers }) => {
@@ -23,8 +23,8 @@ const authLink = setContext(async (_, { headers }) => {
     return {
         headers: {
             ...headers,
-            authorization: accessToken ? `Bearer ${accessToken}` : ""
-        }
+            authorization: accessToken ? `Bearer ${accessToken}` : "",
+        },
     };
 });
 
@@ -52,17 +52,17 @@ const refreshLink = new TokenRefreshLink({
     fetchAccessToken: () => {
         return fetch("http://localhost:5000/refresh_token", {
             method: "POST",
-            credentials: "include"
+            credentials: "include",
         });
     },
-    handleFetch: accessTokenField => {
+    handleFetch: (accessTokenField) => {
         setAccessToken(accessTokenField);
     },
-    handleError: err => {
+    handleError: (err) => {
         console.warn("Your refresh token is invalid. Try to relogin");
         console.error(err);
         console.log(err);
-    }
+    },
 });
 
 const client = new ApolloClient({
@@ -73,9 +73,9 @@ const client = new ApolloClient({
             if (networkError) console.log(networkError);
         }),
         authLink,
-        httpLink
+        httpLink,
     ]),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
 });
 
 export default (
