@@ -13,7 +13,7 @@ import { onError } from "apollo-link-error";
 
 let accessToken = "";
 const httpLink = createHttpLink({
-    uri: "https://second-archive-server.herokuapp.com/",
+    uri: "https://second-archive-server.herokuapp.com/graphql",
     credentials: "include",
 });
 
